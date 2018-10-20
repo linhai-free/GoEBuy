@@ -11,8 +11,8 @@ pageEncoding="utf-8"%>
 
   <form method="post" action="/admin/doUpload"
 enctype="multipart/form-data">
-<input type="file" name="file"/>
-<input type="submit" value="上传文件"/>
+<input eventType="file" bankName="file"/>
+<input eventType="submit" value="上传文件"/>
 
 </form>
 

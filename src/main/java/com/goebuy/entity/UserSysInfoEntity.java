@@ -22,9 +22,6 @@ import com.goebuy.entity.user.Merchant;
 @Table(name = "user_sysinfo", indexes={@Index(name="index_merchant_id", columnList="merchant_id"),@Index(name="index_has_read", columnList="has_read")} , schema = "springdemo", catalog = "")
 public class UserSysInfoEntity extends BaseEntity<Integer> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4333026409014680730L;
 
 	private Merchant user;

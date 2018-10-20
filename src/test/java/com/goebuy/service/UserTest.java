@@ -106,7 +106,7 @@ public class UserTest extends TestCase {
 		u.setPassword("password");
 		u.setPhoneNo("phoneno");
 		u.setUpdateTime("updatetime");
-		u.setUser(null);
+		u.setMerchant(null);
 		u.setWechatHeadPic("wechatHeadPic");
 		u.setWechatNickname("wenickname");
 		u.setWechatNo("wechatNo");
@@ -171,7 +171,7 @@ public class UserTest extends TestCase {
 		u.setPassword("password");
 		u.setPhoneNo("phoneno"+random);
 		u.setUpdateTime("updatetime");
-		u.setUser(null);
+		u.setMerchant(null);
 		u.setWechatHeadPic("wechatHeadPic");	
 		u.setWechatNickname("wenickname");
 		u.setWechatNo("wechatNo");

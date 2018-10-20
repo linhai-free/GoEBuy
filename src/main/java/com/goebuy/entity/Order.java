@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import com.goebuy.entity.user.Merchant;
 import com.goebuy.entity.user.User;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 订单表
@@ -18,71 +20,100 @@ import com.goebuy.entity.user.User;
  * Created by luodejin on 2018/9/6.
  */
 @Entity
-@Table(name = "`order`", indexes={@Index(name="index_user", columnList="user_id"), @Index(name="index_order_id", columnList="order_id"), @Index(name="index_state", columnList="state"), @Index(name="index_event_id", columnList="event_id") }, schema = "springdemo",  catalog = "")
+@Table(name = "`order`",
+        indexes={@Index(name="index_user", columnList="user_id"),
+                @Index(name="index_order_id", columnList="order_id"),
+                @Index(name="index_order_state", columnList="order_state"),
+                @Index(name="index_event_id", columnList="event_id"),
+                @Index(name="index_merchant_id", columnList="merchant_id")},
+        schema = "springdemo",
+        catalog = "")
+@ApiModel(description = "订单表")
 public class Order extends BaseEntity<Integer> {
 
     private static final long serialVersionUID = -4722104061011986099L;
 
-
     /**
      * 订单号：固定长度20
      */
+    @ApiModelProperty(value = "订单号：固定长度20")
     private String orderId;
+
+    /**
+     * 订单类型，预留字段
+     */
+    @ApiModelProperty(value = "订单类型，预留字段")
+    private int orderType;
+
+    /**
+     * 订单来源，预留字段
+     */
+    @ApiModelProperty(value = "订单来源，预留字段")
+    private String orderSource;
 
     /**
      * 支付渠道：0 现金，1 支付宝，2 微信，3 储蓄卡，4 信用卡
      */
-    private Integer channel;
+    @ApiModelProperty(value = "支付渠道：0 现金，1 支付宝，2 微信，3 储蓄卡，4 信用卡")
+    private int payChannel;
 
     /**
      * 订单创建时间
      */
+    @ApiModelProperty(value = "订单创建时间")
     private String createTime;
 
     /**
      * 订单支付时间
      */
+    @ApiModelProperty(value = "订单支付时间")
     private String payTime;
 
     /**
      * 订单关闭时间：超过此时间未支付订单失效，自动关闭
      */
+    @ApiModelProperty(value = "订单关闭时间：超过此时间未支付订单失效，自动关闭")
     private String closeTime;
 
     /**
      * 金额
      */
+    @ApiModelProperty(value = "金额")
     private Double price;
 
     /**
      * 支付用户id
      */
+    @ApiModelProperty(value = "支付用户id")
     private User user;
 
     /**
      * 交易状态：0 待支付，1 交易成功，2 交易关闭
      */
-    private Integer state;
+    @ApiModelProperty(value = "交易状态：0 待支付，1 交易成功，2 交易关闭")
+    private int orderState;
 
     /**
      * 商品(事件)类型：0 活动，1 报名表，2 拼团，3 众筹，4 打赏，5 会员招募
      */
-    private Integer type;
+    @ApiModelProperty(value = "商品(事件)类型：0 活动，1 报名表，2 拼团，3 众筹，4 打赏，5 会员招募")
+    private int eventType;
 
     /**
      * 事件(商品)id：与type联合使用，代表活动、报名表等id
      */
+    @ApiModelProperty(value = " 事件(商品)id：与type联合使用，代表活动、报名表等id")
     private int eventId;
-
-    /**
-     * 审核人
-     */
-    private Merchant audit;
 
     /**
      * 描述信息
      */
+    @ApiModelProperty(value = "描述信息")
     private String description;
+
+    /** 商户id */
+    @ApiModelProperty(value = "商户id")
+    private Merchant merchant;
 
     @Basic
     @Column(name = "order_id", unique=true, length=20, nullable = false)
@@ -95,13 +126,33 @@ public class Order extends BaseEntity<Integer> {
     }
 
     @Basic
-    @Column(name = "channel", nullable = true)
-    public Integer getChannel() {
-        return channel;
+    @Column(name = "order_type")
+    public int getOrderType() {
+        return orderType;
     }
 
-    public void setChannel(Integer channel) {
-        this.channel = channel;
+    public void setOrderType(int orderType) {
+        this.orderType = orderType;
+    }
+
+    @Basic
+    @Column(name = "order_source")
+    public String getOrderSource() {
+        return orderSource;
+    }
+
+    public void setOrderSource(String orderSource) {
+        this.orderSource = orderSource;
+    }
+
+    @Basic
+    @Column(name = "pay_channel", nullable = true)
+    public int getPayChannel() {
+        return payChannel;
+    }
+
+    public void setPayChannel(int payChannel) {
+        this.payChannel = payChannel;
     }
 
     @Basic
@@ -155,23 +206,23 @@ public class Order extends BaseEntity<Integer> {
     }
 
     @Basic
-    @Column(name = "state", nullable = false)
-    public Integer getState() {
-        return state;
+    @Column(name = "order_state", nullable = false)
+    public int getOrderState() {
+        return orderState;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setOrderState(int orderState) {
+        this.orderState = orderState;
     }
 
     @Basic
-    @Column(name = "type", nullable = false)
-    public Integer getType() {
-        return type;
+    @Column(name = "event_type", nullable = false)
+    public int getEventType() {
+        return eventType;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setEventType(int eventType) {
+        this.eventType = eventType;
     }
 
     @Basic
@@ -184,16 +235,6 @@ public class Order extends BaseEntity<Integer> {
         this.eventId = eventId;
     }
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="merchant_id")
-    public Merchant getAudit() {
-        return audit;
-    }
-
-    public void setAudit(Merchant audit) {
-        this.audit = audit;
-    }
-
     @Basic
     @Column(name = "description")
     public String getDescription() {
@@ -203,4 +244,15 @@ public class Order extends BaseEntity<Integer> {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="merchant_id")
+    public Merchant getMerchant() {
+        return merchant;
+    }
+
+    public void setMerchant(Merchant merchant) {
+        this.merchant = merchant;
+    }
+
 }

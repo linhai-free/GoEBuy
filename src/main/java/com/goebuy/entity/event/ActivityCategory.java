@@ -16,6 +16,7 @@ import com.goebuy.entity.BaseEntity;
 import com.goebuy.entity.user.Merchant;
 import com.goebuy.utils.DateUtils;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 活动分类库
@@ -23,28 +24,32 @@ import io.swagger.annotations.ApiModel;
  *
  */
 @Entity
-@Table(name = "activity_cate",  indexes={@Index(name="index_merchant", columnList="merchant_id"), @Index(name="cate_name_Index", columnList="cate_name"), @Index(name="pcate_id_Index", columnList="pcate_id")} , schema = "springdemo",  catalog = "")
+@Table(name = "activity_cate",  indexes={@Index(name="merchant_index", columnList="merchant_id"), @Index(name="cate_name_index", columnList="cate_name"), @Index(name="parent_cate_id_index", columnList="parent_cate_id")} , schema = "springdemo",  catalog = "")
 @ApiModel(description = "活动分类表")
 public class ActivityCategory extends BaseEntity<Integer>{
 
 	private static final long serialVersionUID = 711037462787375173L;
 
-	/** 父类活动分类id */
-	private ActivityCategory parentCateId;
+	/** 父类活动分类 */
+	@ApiModelProperty(value = "父类活动分类")
+	private ActivityCategory parentCate;
 	
 	/** 活动分类名称 */
+	@ApiModelProperty(value = "活动分类名称")
 	private String cateName;
 	
-	/** 创建用户  */
+	/** 创建人 */
+	@ApiModelProperty(value = "创建人")
 	private Merchant creator;
 	
 	/** 创建时间 */
+	@ApiModelProperty(value = "创建时间")
 	private String createTime;
 	
 	/** 是否是通用标签库 , 默认为否 */
+	@ApiModelProperty(value = "是否是通用标签库 , 默认为否")
 	private boolean isCommon = false;
-	
-	
+
 	public  ActivityCategory() {
 	}
 	
@@ -64,15 +69,15 @@ public class ActivityCategory extends BaseEntity<Integer>{
 	}
 
 //	@Basic
-//	@Column(name = "pcate_id", nullable = true)
+//	@Column(name = "parent_cate_id", nullable = true)
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="parent_cate_id")
-	public ActivityCategory getParentCateId() {
-		return parentCateId;
+	public ActivityCategory getParentCate() {
+		return parentCate;
 	}
 
-	public void setParentCateId(ActivityCategory parentCateId) {
-		this.parentCateId = parentCateId;
+	public void setParentCate(ActivityCategory parentCate) {
+		this.parentCate = parentCate;
 	}
 
 	@Basic

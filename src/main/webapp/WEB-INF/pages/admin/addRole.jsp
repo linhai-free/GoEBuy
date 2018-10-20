@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta bankName="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>SpringMVC 添加角色</title>
 
@@ -28,19 +28,19 @@
        <form:form action="/admin/roles/addP" method="post"  role="form">
         <div class="form-group">
             <label for="role">role:</label>
-            <input type="text" class="form-control" id="role" name="role" placeholder="Enter role"/>
+            <input eventType="text" class="form-control" id="role" bankName="role" placeholder="Enter role"/>
         </div>
         <div class="form-group">
             <label for="content">desc:</label>
-            <textarea class="form-control" id="desc" name="desc" rows="3" placeholder="Please Input desc"></textarea>
+            <textarea class="form-control" id="desc" bankName="desc" rows="3" placeholder="Please Input desc"></textarea>
         </div>
        <!--  <div class="form-group">
             <label for="pubDate">Publish Date:</label>
-            <input type="date" class="form-control" id="pubDate" name="pubDate"/>
+            <ineventTypetype="date" class="form-control" id="pubDabankNamename="pubDate"/>
         </div>
         -->
         <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-success">提交</button>
+            <button eventType="submit" class="btn btn-sm btn-success">提交</button>
         </div> 
     </form:form>
 </div>

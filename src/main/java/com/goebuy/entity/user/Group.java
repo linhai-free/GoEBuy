@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.goebuy.entity.BaseEntity;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 群组表
@@ -18,34 +20,49 @@ import com.goebuy.entity.BaseEntity;
  *  Created by luodejin on 2018/8/14.
  */
 @Entity
-@Table(name = "`group`", schema = "springdemo", indexes={@Index(name="group_name_Index", columnList="name"),@Index(name="index_group_type", columnList="type")}, catalog = "")
+@Table(name = "`group`",
+        schema = "springdemo",
+        indexes={@Index(name="group_name_Index", columnList="name"),
+                @Index(name="index_group_type", columnList="type")},
+        catalog = "")
+@ApiModel(description = "群组表")
 public class Group extends BaseEntity<Integer> {
-
 
 	private static final long serialVersionUID = -8029735894274024826L;
 
 	/**
 	 * 群组名称
 	 */
+    @ApiModelProperty(value = "群组名称", required = true)
     private String name;                  
     
     /**
-     * 群组类别：1 事件群组，2 标签群组，3 用户自定义群组
+     * 群组类别：0 事件群组，1 标签群组，2 用户自定义群组
      */
+    @ApiModelProperty(value = "群组类别：0 事件群组，1 标签群组，2 用户自定义群组", required = true)
     private int type;                     
 
     /**
      * 若为事件群组，存事件id
      * 若为标签群组，存最后一次事件(活动)id
      */
+    @ApiModelProperty(value = "若为事件群组，存事件id；若为标签群组，存最后一次事件(活动)id")
     private int sourceId;
-    /** 创建商家id */
-    private Merchant creator;             
+
+    /** 创建人 */
+    @ApiModelProperty(value = "创建人")
+    private Merchant creator;
+
     /** 创建时间 */
-    private String createTime;           
+    @ApiModelProperty(value = "创建时间")
+    private String createTime;
+
     /** 最近更新时间 */
-    private String updateTime;            
-    /* 群组状态: 1 正常，2 解散 */
+    @ApiModelProperty(value = "最近更新时间")
+    private String updateTime;
+
+    /** 群组状态: 0 正常，1 解散 */
+    @ApiModelProperty(value = "群组状态: 0 正常，1 解散", example = "0")
     private int state;                   
 
     @Basic

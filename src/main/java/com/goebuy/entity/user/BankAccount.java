@@ -1,6 +1,8 @@
 package com.goebuy.entity.user;
 
 import com.goebuy.entity.BaseEntity;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -17,20 +19,40 @@ import javax.persistence.Table;
  * Created by luodejin on 2018/8/15.
  */
 @Entity
-@Table(name = "bank_account", schema = "springdemo", indexes={@Index(name="bank_card_number_Index", columnList="card_no")}, catalog = "")
+@Table(name = "bank_account",
+        schema = "springdemo",
+        indexes={@Index(name="card_no_Index", columnList="card_no")},
+        catalog = "")
+@ApiModel(description = "银行账户表")
 public class BankAccount extends BaseEntity<Integer> {
 
 	private static final long serialVersionUID = 208075760882253739L;
 
+    @ApiModelProperty(value = "账号类型：1 企业, 2 个人")
     private String type;                  //账号类型：1 企业, 2 个人
-    private String name;                  //银行名称
+
+    @ApiModelProperty(value = "银行名称")
+    private String bankName;              //银行名称
+
+    @ApiModelProperty(value = "开户银行所在城市")
     private String cityName;              //开户银行所在城市
+
+    @ApiModelProperty(value = "开户银行支行名称")
     private String branchName;            //开户银行支行名称
+
+    @ApiModelProperty(value = "银行卡号")
     private String cardNo;                //银行卡号
+
+    @ApiModelProperty(value = "银行预留手机号")
     private String phoneNo;               //银行预留手机号
+
+    @ApiModelProperty(value = "持卡人")
     private User cardholder;              //持卡人
 
+    @ApiModelProperty(value = "创建时间")
     private String createTime;            //创建时间
+
+    @ApiModelProperty(value = "最近更新时间")
     private String updateTime;            //最近更新时间
 
     @Basic
@@ -44,13 +66,13 @@ public class BankAccount extends BaseEntity<Integer> {
     }
 
     @Basic
-    @Column(name = "name", nullable = false)
-    public String getName() {
-        return name;
+    @Column(name = "bank_name", nullable = false)
+    public String getBankName() {
+        return bankName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
 
     @Basic

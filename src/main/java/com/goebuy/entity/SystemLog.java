@@ -10,10 +10,6 @@ import javax.persistence.Table;
 @Table(name = "sys_systemlog",indexes={@Index(name="operation_type_index", columnList="operation_type"),@Index(name="index_login_name", columnList="login_name"), @Index(name="index_operation_name", columnList="operation_name")}, schema = "springdemo", catalog = "")
 public class SystemLog extends BaseEntity<Integer> {
 
-
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 6145492426257474772L;
 
 	private String loginName;

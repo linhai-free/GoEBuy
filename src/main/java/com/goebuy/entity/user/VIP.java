@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.goebuy.entity.BaseEntity;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 会员卡表
@@ -18,22 +20,43 @@ import com.goebuy.entity.BaseEntity;
  * Created by luodejin on 2018/8/16.
  */
 @Entity
-@Table(name = "vip", schema = "springdemo", indexes={@Index(name="index_merchant_id", columnList="merchant_id")}, catalog = "")
+@Table(name = "vip",
+        schema = "springdemo",
+        indexes={@Index(name="index_merchant_id", columnList="merchant_id")},
+        catalog = "")
+@ApiModel(description = "会员卡表")
 public class VIP extends BaseEntity<Integer> {
 
     private static final long serialVersionUID = -1177028922840848586L;
 
+    @ApiModelProperty(value = "vip类型")
     private int type;                     //vip类型
+
+    @ApiModelProperty(value = "vip名称")
     private String name;                  //vip名称
+
+    @ApiModelProperty(value = "购买费用")
     private String fee;                   //购买费用
+
+    @ApiModelProperty(value = "特权")
     private String privilege;             //特权
+
+    @ApiModelProperty(value = "描述信息")
     private String description;           //描述信息
 
+    @ApiModelProperty(value = "有效期")
     private String duration;              //有效期
+
+    @ApiModelProperty(value = "状态：1 在售，2 未在售")
     private int state;                    //状态：1 在售，2 未在售
 
-    private Merchant creator;                 //创建人
+    @ApiModelProperty(value = "创建人")
+    private Merchant creator;             //创建人
+
+    @ApiModelProperty(value = "该种会员卡创建时间")
     private String createTime;            //该种会员卡创建时间
+
+    @ApiModelProperty(value = "/该种会员卡最近更新时间")
     private String updateTime;            //该种会员卡最近更新时间
 
     @Basic
@@ -135,4 +158,5 @@ public class VIP extends BaseEntity<Integer> {
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
+
 }

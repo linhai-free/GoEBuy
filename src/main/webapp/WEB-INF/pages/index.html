@@ -7,7 +7,7 @@
 
 <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js">
 <!-- <script src="js/jquery-1.7.2.js"></script> -->
-<script type="text/javascript">
+<script eventType="text/javascript">
 
 
     /**
@@ -17,14 +17,14 @@
     */
     function del() {
         $.ajax({
-            type : "delete",
+            eventType : "delete",
             url : "http://localhost:8080/users/",
             contentType: "application/json;charset=utf-8",
             dataType : 'json',
             async : true,
             success : function (data) {
-                if (data.name != null){
-                    alert("你删除的用户是："+data.name);
+                if (data.bankName != null){
+                    alert("你删除的用户是："+data.bankName);
                 } else {
                     alert("没有找到id为："+ data.id+"用户");
                 }
@@ -38,11 +38,11 @@
         var id =1;
         $.ajax({
             url : "http://localhost:8080/users/"+id,
-            type : "GET",
+            eventType : "GET",
             dataType : "json",
             success : function (data) {
                 if (data.username != null){
-                    alert("你查询的用户是："+data.name);
+                    alert("你查询的用户是："+data.bankName);
                 } else {
                     alert("没有找到id为："+id+"用户");
                 }
@@ -54,17 +54,17 @@
     }
     
     function upd() {
-    	var user={"id":1, "name":"testname", "nickname":"nickname"}
+    	var creator={"id":1, "bankName":"testname", "nickname":"nickname"}
         $.ajax({
-            type : "put",
-            data: JSON.stringify(user),
+            eventType : "put",
+            data: JSON.stringify(creator),
             dataType : 'json',
             contentType: "application/json;charset=utf-8",
             url : "http://localhost:8080/users/",
             async : true,
             success : function (data) {
                 if (data.username != null){
-                    alert("你查询的用户是："+data.name);
+                    alert("你查询的用户是："+data.bankName);
                 } else {
                     alert("没有找到id为："+id+"用户");
                 }
@@ -76,13 +76,13 @@
     }
     
     function save(){
-    	var name = $
+    	var bankName = $
     	 $.ajax({
-    	        type: "post",
+    	        eventType: "post",
     	        url: "http://localhost:8080/users/",
     	        contentType: "application/json;charset=utf-8",
     	        //data表示发送的数据
-    	        data: JSON.stringify({"name":"testaddname5", "nickname":"testaddnickname5"}),
+    	        data: JSON.stringify({"bankName":"testaddname5", "nickname":"testaddnickname5"}),
     	        //定义回调响应的数据格式为Json字符串，该属性可以省略
     	        dataType : 'json',
     	      //成功响应的结果
@@ -104,10 +104,10 @@
 
  	<!-- 增加 -->
     <form action="http://localhost:8080/users/" method="post">
-    <!--  <input type="hidden" name="_method" value="delete"/>   -->
-        name<input type="text" name="name" /> 
-        nickname<input type="text" name="nickname" /> 
-        <input id="btn_save" type="submit" value="submit" onclick="save()" />
+    <!--  <ineventTypetype="hiddbankNamename="_method" value="delete"/>   -->
+        bankName<input eventType="text" bankName="bankName" />
+        nickname<input eventType="text" bankName="nickname" />
+        <input id="btn_save" eventType="submit" value="submit" onclick="save()" />
     </form>
 
     <!-- 删除 -->
@@ -119,8 +119,8 @@
    
     
     <form>
-    用户编号：<input type="text" name="number" id="number">
-    <input type="button" value="find" onclick="find()"/>
+    用户编号：<input eventType="text" bankName="number" id="number">
+    <input eventType="button" value="find" onclick="find()"/>
 	</form>
  	<!-- <button id="btn_find" onclick="find()">find request </button>
     <!-- 查询

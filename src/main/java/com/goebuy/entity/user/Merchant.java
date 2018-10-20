@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.goebuy.entity.BaseEntity;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 注册商户(商家)
@@ -18,7 +20,13 @@ import com.goebuy.entity.BaseEntity;
  * Created by luodejin on 2018/8/14.
  */
 @Entity
-@Table(name = "creator", schema = "springdemo", indexes={@Index(name="email_Index", columnList="email"),@Index(name="name_Index", columnList="name"),@Index(name="phone_no_index", columnList="phone_no")}, catalog = "")
+@Table(name = "creator",
+        schema = "springdemo",
+        indexes={@Index(name="email_Index", columnList="email"),
+                @Index(name="name_Index", columnList="name"),
+                @Index(name="phone_no_index", columnList="phone_no")},
+        catalog = "")
+@ApiModel(description = "注册商户(商家)")
 public class Merchant extends BaseEntity<Integer> {
 
     private static final long serialVersionUID = 4554875451091830646L;
@@ -26,54 +34,102 @@ public class Merchant extends BaseEntity<Integer> {
     /**
      * 注册商户基本信息
      */
+    @ApiModelProperty(value = "邮箱")
     private String email;                 //邮箱
+
+    @ApiModelProperty(value = "密码")
     private String password;              //密码
+
+    @ApiModelProperty(value = "账号名称：商户名称，商家名称，社群名称")
     private String name;                  //账号名称：商户名称，商家名称，社群名称
+
+    @ApiModelProperty(value = "Logo")
     private String logo;                  //Logo
+
+    @ApiModelProperty(value = "手机号码")
     private String phoneNo;               //手机号码
+
+    @ApiModelProperty(value = "管理员姓名")
     private String administrator;         //管理员姓名
+
+    @ApiModelProperty(value = "注册时间")
     private String createTime;            //注册时间
+
+    @ApiModelProperty(value = "最近更新时间")
     private String updateTime;            //最近更新时间
 
     /**
      * 认证信息
      */
+    @ApiModelProperty(value = "状态：1 未认证，2 审核中，3 认证成功, 4 禁用，5 注销")
     private Integer state;                //状态：1 未认证，2 审核中，3 认证成功, 4 禁用，5 注销
+
+    @ApiModelProperty(value = "认证类型：1 企业账号认证，2 个人账号认证")
     private Integer certificateType;      //认证类型：1 企业账号认证，2 个人账号认证
+
+    @ApiModelProperty(value = "企业账号认证")
     private Company companyCertification; //企业账号认证
+
+    @ApiModelProperty(value = "个人账号认证")
     private User personCertification;     //个人账号认证
+
+    @ApiModelProperty(value = "认证时间")
     private String certificateTime;       //认证时间
 
     /**
      * 收款账户
      */
+    @ApiModelProperty(value = "收款账户")
     private BankAccount bankAccount;      //收款账户
 
     /**
      * 附加信息
      *
      */
+    @ApiModelProperty(value = "商户等级")
     private Integer merchantLevel;        //商户等级
+
+    @ApiModelProperty(value = "商户积分")
     private Integer merchantIntegral;     //商户积分
 
     /**
      * 会员卡信息
      */
+    @ApiModelProperty(value = "是否vip")
     private boolean isVip;                //是否vip
+
+    @ApiModelProperty(value = "vip卡号")
     private Long vipId;                   //vip卡号
+
+    @ApiModelProperty(value = "vip类型")
     private Integer vipType;              //vip类型
+
+    @ApiModelProperty(value = "商户付费成为vip的时间")
     private String vipStartTime;          //商户付费成为vip的时间
+
+    @ApiModelProperty(value = "vip到期时间")
     private String vipEndTime;            //vip到期时间
+
+    @ApiModelProperty(value = "缴费次数")
     private Integer vipCount;             //缴费次数
 
     /**
      * 登录信息
      */
+    @ApiModelProperty(value = "最后登录时间")
     private String loginTime;             //最后登录时间
-    private String loginIp;               //最后登录IP
-    private Integer loginCount;               //登录次数
 
+    @ApiModelProperty(value = "最后登录IP")
+    private String loginIp;               //最后登录IP
+
+    @ApiModelProperty(value = "登录次数")
+    private Integer loginCount;           //登录次数
+
+
+    @ApiModelProperty(value = "介绍人")
     private User introducer;              //介绍人
+
+    @ApiModelProperty(value = "渠道")
     private String channel;               //渠道
 
     @Basic

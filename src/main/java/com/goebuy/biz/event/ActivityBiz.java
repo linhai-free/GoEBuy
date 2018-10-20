@@ -2,6 +2,7 @@ package com.goebuy.biz.event;
 
 import java.util.List;
 
+import com.goebuy.entity.event.Activity;
 import com.goebuy.params.Response;
 import com.goebuy.utils.Numbers;
 import com.google.common.base.Strings;
@@ -10,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.goebuy.entity.event.Activity;
 import com.goebuy.service.event.ActivityService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +30,7 @@ public class ActivityBiz {
 //		 * 基本信息
 //		 */
 //		//标题
-//		activity.setName(request.getParameter("name"));
+//		activity.setBankName(request.getParameter("name"));
 //		//所属商家
 //		Merchant creator = new Merchant();
 //		creator.setId(Numbers.safeParseInt(request.getParameter("merchantId")));
@@ -74,7 +74,7 @@ public class ActivityBiz {
 //		//售票类型
 //		activity.setTicketType(Numbers.safeParseInt(request.getParameter("ticketType")));
 //		//报名人数限制 默认不限制
-//		activity.setEnrollCnt(Numbers.safeParseInt(request.getParameter("enrollCnt"), 0));
+//		activity.setEnrollType(Numbers.safeParseInt(request.getParameter("enrollCnt"), 0));
 //		//余票显示
 //		activity.setShowLeftTicket(Boolean.parseBoolean(request.getParameter("showLeftTicket")));
 //		//是否需要审核

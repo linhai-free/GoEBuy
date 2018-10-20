@@ -49,5 +49,4 @@ public class ActivityController {
     public Response<List<Activity>> list(HttpServletRequest request) throws Exception {
         return activityBiz.list(request);
     }
-
 }

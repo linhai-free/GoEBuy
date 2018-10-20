@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.alibaba.fastjson.JSON;
@@ -13,13 +14,19 @@ import com.goebuy.entity.BaseEntity;
 import com.goebuy.entity.user.Merchant;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.List;
+
 @MappedSuperclass
-public abstract class BaseActivityEntity<T> extends BaseEntity<T> {
+public abstract class BaseEventEntity<T> extends BaseEntity<T> {
 
 	private static final long serialVersionUID = 7207739713485965568L;
 
+	/**
+	 * 基本信息
+	 */
+
 	/** 状态 0:未开始 1:进行中 2:已结束 */
-	@ApiModelProperty(value = "状态 0:未开始 1:进行中 2:已结束", example = "0", position = 1)
+	@ApiModelProperty(value = "状态 0:未开始 1:进行中 2:已结束", example = "0")
 	protected int state;
 
 	/** 标题 , 最长64个字符  */
@@ -42,21 +49,21 @@ public abstract class BaseActivityEntity<T> extends BaseEntity<T> {
 	@ApiModelProperty(value = "结束时间", example = "23:59")
 	protected String endTime;
 
-	/** 简介 */
-	@ApiModelProperty(value = "简介")
+	/** 简介(文案) */
+	@ApiModelProperty(value = "简介(文案)")
 	protected String description;
 
-	/** 标签集合， 最多5个 */
+	/** 标签集合，最多5个 */
 	@ApiModelProperty(value = "标签集合，最多5个", example = "培训，创业，互联网")
-	protected String tagSet;
+	protected List<Tag> tagSet;
 
 
 	/**
-	 * 表单信息
+	 * 表单信息(表单设置 or 会员资料)
 	 */
 
 	/** 填写字段 */
-	@ApiModelProperty(value = "表单信息")
+	@ApiModelProperty(value = "表单信息(表单设置 or 会员资料)")
 	protected String fieldSet;
 
 
@@ -78,7 +85,7 @@ public abstract class BaseActivityEntity<T> extends BaseEntity<T> {
 
 
 	/**
-     * 分享信息
+     * 分享信息(分享设置)
      */
 
 	/** 分享标题 */
@@ -101,6 +108,7 @@ public abstract class BaseActivityEntity<T> extends BaseEntity<T> {
 	/** 事件二维码图片 */
 	@ApiModelProperty(value = "事件二维码图片")
 	protected String qrcode;
+
 
 	/** 创建人 */
 	@ApiModelProperty(value = "创建人, 对应商户表")
@@ -201,13 +209,14 @@ public abstract class BaseActivityEntity<T> extends BaseEntity<T> {
 	public void setFieldSet(String field_set) {
 		this.fieldSet = field_set;
 	}
-	@Basic
-	@Column(name = "tag_set", columnDefinition = "varchar(120) COMMENT '活动标签集合'", nullable = true)
-	public String getTagSet() {
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="tag_id")
+	public List<Tag> getTagSet() {
 		return tagSet;
 	}
 
-	public void setTagSet(String tagSet) {
+	public void setTagSet(List<Tag> tagSet) {
 		this.tagSet = tagSet;
 	}
 

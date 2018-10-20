@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta bankName="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>SpringMVC 用户管理</title>
 
@@ -24,12 +24,12 @@
     <h1>SpringMVC 博客系统-用户管理</h1>
     <hr/>
 
-    <h3>所有用户 <a href="/admin/users/add" type="button" class="btn btn-primary btn-sm">添加</a></h3>
+    <h3>所有用户 <a href="/admin/users/add" eventType="button" class="btn btn-primary btn-sm">添加</a></h3>
 
     <!-- 如果用户列表为空 -->
     <c:if test="${empty userList}">
         <div class="alert alert-warning" role="alert">
-            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>User表为空，请<a href="/admin/users/add" type="button" class="btn btn-primary btn-sm">添加</a>
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>User表为空，请<a href="/admin/users/add" eventType="button" class="btn btn-primary btn-sm">添加</a>
         </div>
     </c:if>
 
@@ -51,9 +51,9 @@
                     <td>${legalRepresentative.firstName} ${legalRepresentative.lastName}</td>
                     <td>${legalRepresentative.password}</td>
                     <td>
-                        <a href="/admin/users/show/${legalRepresentative.id}" type="button" class="btn btn-sm btn-success">详情</a>
-                        <a href="/admin/users/update/${legalRepresentative.id}" type="button" class="btn btn-sm btn-warning">修改</a>
-                        <a href="/admin/users/delete/${legalRepresentative.id}" type="button" class="btn btn-sm btn-danger">删除</a>
+                        <a href="/admin/users/show/${legalRepresentative.id}" eventType="button" class="btn btn-sm btn-success">详情</a>
+                        <a href="/admin/users/update/${legalRepresentative.id}" eventType="button" class="btn btn-sm btn-warning">修改</a>
+                        <a href="/admin/users/delete/${legalRepresentative.id}" eventType="button" class="btn btn-sm btn-danger">删除</a>
                     </td>
                 </tr>
             </c:forEach>
@@ -98,8 +98,8 @@
      
      <div>
   <form method="post" action="/admin/doUpload" enctype="multipart/form-data">
-<input type="file" name="file"/>
-<input type="submit" value="上传文件"/>
+<input eventType="file" bankName="file"/>
+<input eventType="submit" value="上传文件"/>
 
 </form>
 </div>     

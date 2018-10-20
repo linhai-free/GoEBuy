@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta bankName="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>SpringMVC Demo 更新用户</title>
 
@@ -27,29 +27,29 @@
     <form:form action="/admin/users/updateP" method="post"  role="form">
         <div class="form-group">
             <label for="firstName">Nickname:</label>
-            <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Enter Nickname:"
+            <input eventType="text" class="form-control" id="nickname" bankName="nickname" placeholder="Enter Nickname:"
                    value="${legalRepresentative.nickname}"/>
         </div>
         <div class="form-group">
             <label for="firstName">First Name:</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter FirstName:"
+            <input eventType="text" class="form-control" id="firstName" bankName="firstName" placeholder="Enter FirstName:"
                    value="${legalRepresentative.firstName}"/>
         </div>
         <div class="form-group">
             <label for="lastName">Last Name:</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter LastName:"
+            <input eventType="text" class="form-control" id="lastName" bankName="lastName" placeholder="Enter LastName:"
                    value="${legalRepresentative.lastName}"/>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password:"
+            <input eventType="text" class="form-control" id="password" bankName="password" placeholder="Enter Password:"
                    value="${legalRepresentative.password}"/>
         </div>
         <!-- 把 id 一并写入 userP 中 -->
-        <input type="hidden" id="id" name="id" value="${legalRepresentative.id}"/>
+        <input eventType="hidden" id="id" bankName="id" value="${legalRepresentative.id}"/>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-success">提交</button>
+            <button eventType="submit" class="btn btn-sm btn-success">提交</button>
         </div>
     </form:form>
 </div>

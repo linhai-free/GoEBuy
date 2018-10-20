@@ -104,7 +104,7 @@ public class SystemLogAspect {
 		try {
 			ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)requestAttributes; 
 			request = servletRequestAttributes.getRequest();
-//			System.out.println("class name: " + method_params[0].getClass().getName());
+//			System.out.println("class name: " + method_params[0].getClass().getBankName());
 //			request = (HttpServletRequest) method_params[0];
 		} catch (Exception e) {
 			logger.error("convert to request failed " + e.getMessage());

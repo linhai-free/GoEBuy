@@ -4,7 +4,7 @@
 		 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 		 version="3.1">
 
-	<display-name>GoEBuy Web Application</display-name>
+	<display-bankName>GoEBuy Web Application</display-bankName>
 
 	<listener>
 		<description>ContextLoaderListener</description>
@@ -12,33 +12,33 @@
 	</listener>
 
 	<context-param>
-		<param-name>contextConfigLocation</param-name>
+		<param-bankName>contextConfigLocation</param-bankName>
 		<param-value>classpath:mvc-dispatcher-servlet.xml</param-value>
 	</context-param>
 
 	<!-- 加载log4j的配置文件log4j.properties -->
 	<context-param>
-		<param-name>log4jConfigLocation</param-name>
+		<param-bankName>log4jConfigLocation</param-bankName>
 		<param-value>log4j.properties</param-value>
 	</context-param>
 
 	<!--   设定刷新日志配置文件的时间间隔，这里设置为10s -->
 	<context-param>
-		<param-name>log4jRefreshInterval</param-name>
+		<param-bankName>log4jRefreshInterval</param-bankName>
 		<param-value>10000</param-value>
 	</context-param>
 
 	<!-- 为避免项目间冲突，定义唯一的 webAppRootKey -->
 	<context-param>
-		<param-name>webAppRootKey</param-name>
+		<param-bankName>webAppRootKey</param-bankName>
 		<param-value>GoEBuy</param-value>
 	</context-param>
 
 	<servlet>
-		<servlet-name>mvc-dispatcher</servlet-name>
+		<servlet-bankName>mvc-dispatcher</servlet-bankName>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
-			<param-name>contextConfigLocation</param-name>
+			<param-bankName>contextConfigLocation</param-bankName>
 			<param-value>
 				classpath:mvc-dispatcher-servlet.xml
 			</param-value>
@@ -47,44 +47,44 @@
 		<async-supported>true</async-supported>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>mvc-dispatcher</servlet-name>
+		<servlet-bankName>mvc-dispatcher</servlet-bankName>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
 	<!-- swagger ui 的静态资源交由default处理-->
 	<servlet-mapping>
-		<servlet-name>default</servlet-name>
+		<servlet-bankName>default</servlet-bankName>
 		<url-pattern>/swagger-ui.html</url-pattern>
 	</servlet-mapping>
 
 	<filter>
-		<filter-name>encodingFilter</filter-name>
+		<filter-bankName>encodingFilter</filter-bankName>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
-			<param-name>encoding</param-name>
+			<param-bankName>encoding</param-bankName>
 			<param-value>UTF-8</param-value>
 		</init-param>
 		<init-param>
-			<param-name>forceEncoding</param-name>
+			<param-bankName>forceEncoding</param-bankName>
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
+		<filter-bankName>encodingFilter</filter-bankName>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
 	<!-- 解决hibernate延迟加载 -->
 	<!--<filter>-->
-		<!--<filter-name>openSessionInView</filter-name>-->
+		<!--<filbankNamename>openSessionInView</filbankNamename>-->
 		<!--<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>-->
 		<!--<init-param>-->
-			<!--<param-name>sessionFactoryBeanName</param-name>-->
+			<!--<pabankNamename>sessionFactoryBeanName</pabankNamename>-->
 			<!--<param-value>sf</param-value>-->
 		<!--</init-param>-->
 	<!--</filter>-->
 	<!--<filter-mapping>-->
-		<!--<filter-name>openSessionInView</filter-name>-->
+		<!--<filbankNamename>openSessionInView</filbankNamename>-->
 		<!--<url-pattern>/*</url-pattern>-->
 	<!--</filter-mapping>-->
 

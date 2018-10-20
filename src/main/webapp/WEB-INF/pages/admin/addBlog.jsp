@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta bankName="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>SpringMVC 添加博客</title>
 
@@ -28,11 +28,11 @@
        <form:form action="/admin/blogs/addP" method="post"  role="form">
         <div class="form-group">
             <label for="title">Title:</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title:"/>
+            <input eventType="text" class="form-control" id="title" bankName="title" placeholder="Enter Title:"/>
         </div>
         <div class="form-group">
             <label for="userByUserId.id">Author:</label>
-            <select class="form-control" id="userByUserId.id" name="userByUserId.id">
+            <select class="form-control" id="userByUserId.id" bankName="userByUserId.id">
                 <c:forEach items="${userList}" var="legalRepresentative">
                     <option value="${legalRepresentative.id}">${legalRepresentative.nickname}, ${legalRepresentative.firstName} ${legalRepresentative.lastName}</option>
                 </c:forEach>
@@ -40,14 +40,14 @@
         </div>
         <div class="form-group">
             <label for="content">Content:</label>
-            <textarea class="form-control" id="content" name="content" rows="3" placeholder="Please Input Content"></textarea>
+            <textarea class="form-control" id="content" bankName="content" rows="3" placeholder="Please Input Content"></textarea>
         </div>
         <div class="form-group">
             <label for="pubDate">Publish Date:</label>
-            <input type="date" class="form-control" id="pubDate" name="pubDate"/>
+            <input eventType="date" class="form-control" id="pubDate" bankName="pubDate"/>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-success">提交</button>
+            <button eventType="submit" class="btn btn-sm btn-success">提交</button>
         </div>
     </form:form>
 </div>

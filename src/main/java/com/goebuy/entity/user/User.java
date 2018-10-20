@@ -10,9 +10,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import com.goebuy.entity.BaseEntity;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * 用户表
+ */
 @Entity
-@Table(name = "user", schema = "springdemo", indexes={@Index(name="name_Index", columnList="name")}, catalog = "")
+@Table(name = "merchant",
+        schema = "springdemo",
+        indexes={@Index(name="name_Index", columnList="name")},
+        catalog = "")
+@ApiModel(description = "用户表")
 public class User extends BaseEntity<Integer> {
 	
 	private static final long serialVersionUID = -752197205289331832L;
@@ -20,43 +29,80 @@ public class User extends BaseEntity<Integer> {
     /**
      * 基本信息
      */
+    @ApiModelProperty(value = "昵称")
     private String nickname;              //昵称
+
+    @ApiModelProperty(value = "密码")
     private String password;              //密码
+
+    @ApiModelProperty(value = "真实姓名")
     private String name;                  //真实姓名
+
+    @ApiModelProperty(value = "邮箱")
     private String email;                 //邮箱
+
+    @ApiModelProperty(value = "手机号码")
     private String phoneNo;               //手机号码
-    /**性别: 0男 1女 -1未知*/
+
+    /** 性别: 0 男，1女，-1 未知 */
+    @ApiModelProperty(value = "性别: 0 男，1女，-1 未知", example = "-1")
     private Integer gender = -1;          //性别
+
+    @ApiModelProperty(value = "地址")
     private String address;               //地址
+
+    @ApiModelProperty(value = "生日")
     private String birthday;              //生日
 
     /**
      * 附加信息
      */
+    @ApiModelProperty(value = "学历")
     private String education;             //学历
+
+    @ApiModelProperty(value = "就职单位或就读学校名称")
     private String institution;           //就职单位或就读学校名称
+
+    @ApiModelProperty(value = "担任职务或就读专业")
     private String job;                   //担任职务或就读专业
 
+    @ApiModelProperty(value = "是否是商户", example = "false")
     private Boolean isMerchant=false;     //是否是商户
-    private Merchant user;                //关联的商户账号
+
+    @ApiModelProperty(value = "关联的商户账号")
+    private Merchant merchant;            //关联的商户账号
 
     /**
      * 个人账号认证信息，非必须
      */
+    @ApiModelProperty(value = "身份证号码")
     private String idCardNo;              //身份证号码
+
+    @ApiModelProperty(value = "身份证正面照")
     private String idCardFrontPic;        //身份证正面照
+
+    @ApiModelProperty(value = "身份证反面照")
     private String idCardBackPic;         //身份证反面照
 
     /**
      * 微信信息
      */
+    @ApiModelProperty(value = "微信号")
     private String wechatNo;              //微信号
+
+    @ApiModelProperty(value = "微信昵称")
     private String wechatNickname;        //微信昵称
+
+    @ApiModelProperty(value = "微信头像")
     private String wechatHeadPic;         //微信头像
 
+    @ApiModelProperty(value = "创建时间")
     private String createTime;            //创建时间
+
+    @ApiModelProperty(value = "最近更新时间")
     private String updateTime;            //最近更新时间
 
+    @ApiModelProperty(value = "扩展信息")
     private String ext;                   //扩展信息
 
     @Basic
@@ -181,13 +227,13 @@ public class User extends BaseEntity<Integer> {
 
 //    @OneToOne(fetch = FetchType.EAGER,  cascade = {CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
     @OneToOne(fetch = FetchType.EAGER,  cascade = {CascadeType.ALL})
-    @JoinColumn(name="user_id", nullable=true )
-    public Merchant getUser() {
-        return user;
+    @JoinColumn(name="merchant_id", nullable=true )
+    public Merchant getMerchant() {
+        return merchant;
     }
 
-    public void setUser(Merchant merchant) {
-        this.user = merchant;
+    public void setMerchant(Merchant merchant) {
+        this.merchant = merchant;
     }
 
     @Basic

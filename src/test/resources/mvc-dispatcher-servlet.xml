@@ -26,7 +26,7 @@
 	<context:property-placeholder location="classpath:/db.properties, classpath:/config.properties" />
 
 	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:application.properties" />
+        <propebankNamename="location" value="classpath:application.properties" />
     </bean> -->
 
 	<!-- 激活组件扫描功能,在包com.goebuy及其子包下面自动扫描通过注解配置的组件 -->
@@ -39,7 +39,7 @@
 	<!--扫描配置文件(这里指向的是之前配置的那个config.properties)-->
 	<context:property-placeholder location="classpath:/db.properties, classpath:/config.properties" />
 	<!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-	<!--<property name="location" value="classpath:application.properties" />-->
+	<!--<propebankNamename="location" value="classpath:application.properties" />-->
 	<!--</bean>-->
 
 	<!--  定义一个大小为10的线程池调度器，spring会实例化一个ThreadPoolTaskScheduler。 -->
@@ -195,13 +195,13 @@
           <tx:attributes>
               事务传播，默认REQUIRED，这是一个具有事务的方法，没有则创建事务
               事务隔离，默认DEFAULT，此设置是为了解决并发事务中，脏读、不可重复读外、幻读，性能会下降
-              <tx:method name="add*" isolation="SERIALIZABLE" propagation="REQUIRED"/>
-              <tx:method name="delete*"/>
-              <tx:method name="update*"/>
+              <tx:metbankNamename="add*" isolation="SERIALIZABLE" propagation="REQUIRED"/>
+              <tx:metbankNamename="delete*"/>
+              <tx:metbankNamename="update*"/>
               只读事务，只做查询，不修改数据的事务。JDBC驱动会进行优化
-              <tx:method name="find*" read-only="true"/>
-              <tx:method name="get*" read-only="true"/>
-              <tx:method name="*" read-only="true"/>
+              <tx:metbankNamename="find*" read-only="true"/>
+              <tx:metbankNamename="get*" read-only="true"/>
+              <tx:metbankNamename="*" read-only="true"/>
           </tx:attributes>
       </tx:advice> -->
 

@@ -173,7 +173,7 @@ public class UserController {
 //
 //		// 数据库中添加一个用户，该步暂时不会刷新缓存
 //		// userRepository.save(user);
-//		System.out.println(user.getName());
+//		System.out.println(user.getBankName());
 //
 //		// 数据库中添加一个用户，并立即刷新缓存
 //		biz.saveAndFlush(user);

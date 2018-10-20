@@ -13,96 +13,33 @@ import javax.persistence.Table;
 import com.goebuy.entity.BaseEntity;
 import com.goebuy.entity.Order;
 import com.goebuy.entity.user.User;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
- * 用户打赏表
+ * 用户-打赏表
  * @author Administrator
  *
  */
 @Entity
 @Table(name = "user_tip", indexes={@Index(name="index_user", columnList="user_id")}, schema = "springdemo",  catalog = "")
 public class UserTip extends BaseEntity<Integer> {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8685619633799829922L;
 
-	/** 打赏用户 */
-	private User user;
-	
+	/** 打赏id */
+	@ApiModelProperty(value = "打赏id")
 	private Tip tip;
 	
-//	/** 用户打赏金额*/
-//	private double userFee;
-	
-	 /** 生成订单 */
-    private Order order;
-	
-	/** 打赏渠道*/
-	private String channel;
-	
-	/** 打赏时间 */
-	private String payTime;
-	
-	/** 打赏评论*/
+	/** 打赏评论 */
 	private String remark;
-	
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="user_id", nullable=false)
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="tip_id", nullable=false)
 	public Tip getTip() {
 		return tip;
 	}
+
 	public void setTip(Tip tip) {
 		this.tip = tip;
-	}
-	
-//	@Basic
-//	@Column(name = "user_fee", nullable = true)
-//	public double getUserFee() {
-//		return userFee;
-//	}
-//	public void setUserFee(double userFee) {
-//		this.userFee = userFee;
-//	}
-	
-
-	@Basic
-	@Column(name = "channel", nullable = true)
-	public String getChannel() {
-		return channel;
-	}
-	
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="order_id")
-	public Order getOrder() {
-		return order;
-	}
-	public void setOrder(Order order) {
-		this.order = order;
-	}
-	
-	
-	public void setChannel(String channel) {
-		this.channel = channel;
-	}
-	
-	@Basic
-	@Column(name = "pay_time", nullable = true)
-	public String getPayTime() {
-		return payTime;
-	}
-	public void setPayTime(String payTime) {
-		this.payTime = payTime;
 	}
 	
 	@Basic
@@ -110,6 +47,7 @@ public class UserTip extends BaseEntity<Integer> {
 	public String getRemark() {
 		return remark;
 	}
+
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}

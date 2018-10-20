@@ -12,9 +12,6 @@ import javax.persistence.Table;
 @Table(name = "auth_operation", indexes={@Index(name="index_operation", columnList="operation")} ,  schema = "springdemo", catalog = "")
 public class Operation extends BaseEntity<Integer> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -918558215156348481L;
 
 	/* varchar */
@@ -22,11 +19,9 @@ public class Operation extends BaseEntity<Integer> {
 
 	private String desc;
 
-	
 	public Operation() {
     	super();
     }
-
 	
 	public Operation(String operation) {
 		super();

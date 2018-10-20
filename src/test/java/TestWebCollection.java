@@ -154,7 +154,7 @@ public class TestWebCollection extends TestCase{
 //			    "file",
 //			    new FileInputStream(f),
 //			    ContentType.APPLICATION_OCTET_STREAM,
-//			    f.getName()
+//			    f.getBankName()
 //			);
 //		} catch (FileNotFoundException e) {
 //			e.printStackTrace();

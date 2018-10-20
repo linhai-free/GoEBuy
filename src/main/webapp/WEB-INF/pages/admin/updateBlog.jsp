@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta bankName="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>SpringMVC 修改博客</title>
 
@@ -30,11 +30,11 @@
      <form:form action="/admin/blogs/updateP" method="post" role="form">
         <div class="form-group">
             <label for="title">Title:</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title:" value="${blog.title}"/>
+            <input eventType="text" class="form-control" id="title" bankName="title" placeholder="Enter Title:" value="${blog.title}"/>
         </div>
         <div class="form-group">
             <label for="userByUserId.id">Author:</label>
-            <select class="form-control" id="userByUserId.id" name="userByUserId.id">
+            <select class="form-control" id="userByUserId.id" bankName="userByUserId.id">
                 <c:forEach items="${userList}" var="legalRepresentative">
                     <c:if test="${legalRepresentative.id==blog.userByUserId.id}">
                         <option value="${legalRepresentative.id}" selected="selected">${legalRepresentative.nickname}, ${legalRepresentative.firstName} ${legalRepresentative.lastName}</option>
@@ -47,18 +47,18 @@
         </div>
         <div class="form-group">
             <label for="content">Content:</label>
-            <textarea class="form-control" id="content" name="content" rows="3"
+            <textarea class="form-control" id="content" bankName="content" rows="3"
                       placeholder="Please Input Content">${blog.content}</textarea>
         </div>
         <div class="form-group">
             <label for="pubDate">Publish Date:</label>
-            <input type="date" class="form-control" id="pubDate" name="pubDate"
+            <input eventType="date" class="form-control" id="pubDate" bankName="pubDate"
                    value="<fmt:formatDate value="${blog.pubDate}" pattern="yyyy-MM-dd"/>"/>
         </div>
         <!-- 把 id 一并写入 blogP 中 -->
-        <input type="hidden" id="id" name="id" value="${blog.id}"/>
+        <input eventType="hidden" id="id" bankName="id" value="${blog.id}"/>
         <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-success">提交</button>
+            <button eventType="submit" class="btn btn-sm btn-success">提交</button>
         </div>
     </form:form>
 

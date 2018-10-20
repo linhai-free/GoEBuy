@@ -94,10 +94,10 @@ public class SysLogBizTest extends TestCase {
 //		list.add(r3);
 //		list.add(r4);
 //		for(Activity r: list) {
-//			if(biz.findByName(r.getName())==null) {
+//			if(biz.findByName(r.getBankName())==null) {
 //				biz.saveAndFlush(r);
 //			}else {
-//				System.out.println("activity "+r.getName() +" exist");
+//				System.out.println("activity "+r.getBankName() +" exist");
 //			}
 //		}
 	}

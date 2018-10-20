@@ -1,6 +1,8 @@
 package com.goebuy.entity.user;
 
 import com.goebuy.entity.BaseEntity;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -13,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- * 用户群组表
+ * 用户-群组表
  * 包含: <ul>
  * <li>用户事件群组表</li>
  * <li>用户标签群组表</li>
@@ -23,13 +25,22 @@ import javax.persistence.Table;
  * Created by luodejin on 2018/8/14.
  */
 @Entity
-@Table(name = "user_group",indexes={@Index(name="index_user", columnList="user_id"), @Index(name="index_group", columnList="group_id")}, schema = "springdemo")
+@Table(name = "user_group",
+        indexes={@Index(name="index_user", columnList="user_id"),
+                @Index(name="index_group", columnList="group_id")},
+        schema = "springdemo")
+@ApiModel(description = "用户-群组表")
 public class UserGroup extends BaseEntity<Integer> {
 
     private static final long serialVersionUID = 8793511690544771276L;
 
+    @ApiModelProperty(value = "用户id")
     private User user;                    //用户
+
+    @ApiModelProperty(value = "群组id")
     private Group group;                  //群组
+
+    @ApiModelProperty(value = "用户进入群组时间")
     private String createTime;            //用户进入群组时间
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
